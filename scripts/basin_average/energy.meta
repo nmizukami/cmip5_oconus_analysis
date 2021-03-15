@@ -1,0 +1,5 @@
+NET_SHORT,    mean, float32, W/m2, net shortwave radiation 
+NET_LONG,     mean, float32, W/m2, net longwave radiation 
+SENSIBLE,     mean, float32, W/m2, sensible heat flux 
+LATENT,       mean, float32, W/m2, latent heat flux   
+GRND_FLUX,    mean, float32, W/m2, ground heat flux 

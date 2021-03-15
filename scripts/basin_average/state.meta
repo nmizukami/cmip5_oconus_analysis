@@ -1,0 +1,5 @@
+SWE, mean, float32, mm, snow water equivalent 
+IWE, mean, float32, mm, ice water equivalent 
+SM1, mean, float32, mm, soil moisture content at layer 1
+SM2, mean, float32, mm, soil moisture content at layer 2 
+SM3, mean, float32, mm, soil moisture content at layer 3

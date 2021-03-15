@@ -1,0 +1,13 @@
+script to remap WRF-Hydro forcing data
+
+ To get usage ./remap_WRFhydro_forcing.py -h
+ 
+ To remap one file, e.g., 
+ ./remap_WRFhydro_forcing.py nwm_v2_forcing/2019093023.LDASIN_DOMAIN1 spatialweights_1km_v2_0_20200414.nc ./conus_huc/2019093023.LDASIN_DOMAIN1 forcing.meta int64
+
+ To batch-process, 
+ run setup pbsfile and joblist files (need to edit max process per node. cannot use 36 procs due to high memory usage, maybe 4-6 procs)
+ ./setup_job_submit.sh 
+ submit jobs
+ qsub ./pbs_scripts/cmd_submit_?.sh
+ 

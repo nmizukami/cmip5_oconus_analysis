@@ -1,0 +1,7 @@
+HAWAII MRI-CGCM3_rcp85_BCSD_wf_1980.nc is corrupt
+
+so copied from 1979. 
+
+need to redo vic simulation
+
+cp MRI-CGCM3_rcp85_BCSD_wf_1979.nc MRI-CGCM3_rcp85_BCSD_wf_1980.nc 

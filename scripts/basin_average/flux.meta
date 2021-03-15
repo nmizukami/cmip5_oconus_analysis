@@ -1,0 +1,6 @@
+RUNOFF,       mean, float32, mm/month, surface runoff 
+BASEFLOW,     mean, float32, mm/month, baseflow 
+EVAP,         mean, float32, mm/month, actual evapotranspiration 
+PRCP,         mean, float32, mm/month, precipitation   
+SNOW_MELT,    mean, float32, mm/month, snow melt
+GLACIER_MELT, mean, float32, mm/month, ice melt     
