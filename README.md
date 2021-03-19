@@ -1,10 +1,10 @@
 # CMIP5 OCONUS hydrologic projection Analysis
-A collection of notebooks and tools for analyzing the LOCA dataset
+A collection of notebooks and tools for analyzing the CMIP5 OCONUS dataset
 
 
 ## Goals:
 
-1.  Evaluate hydrologic changes over Alaska/Hawaii in early, mid, and later 21st century compared to historical period (later 20th century) 
+1.  Evaluate hydrologic changes over Alaska and Hawaii in early, mid, and later 21st century compared to historical period (1970-1999) 
 2.	Assess how portrayals of hydrologic projections are different due to GCMs  
 
 ## Links
@@ -13,7 +13,7 @@ A collection of notebooks and tools for analyzing the LOCA dataset
 
 ## Acknowledgements
 
-This work is jointly supported the US Bureau of Reclamation and the US Army Corps of Engineers. NCAR is supported by the National Science Foundation.
+This work is jointly supported by the US Army Corps of Engineers. NCAR is supported by the National Science Foundation.
 
 ## References:
 
