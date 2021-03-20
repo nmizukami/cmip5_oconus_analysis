@@ -9,7 +9,7 @@ import numpy as np
 #from dask_mpi import initialize
 #initialize()
 
-varTypes   = ["eb"]
+varTypes   = ["ws","wf"]
 regions    = ['alaska']
 
 if __name__ == "__main__":
@@ -30,17 +30,17 @@ if __name__ == "__main__":
             obs = 'uh'
 
         ds1 = xr.open_dataset(os.path.join(main_dir, f'{region}_mask.nc'))
-        mask = ds1['latitude'].notnull()
+        mask = ds1['mask'].where(ds1['mask']==1).notnull()
 
         sub_dir=os.path.join(main_dir, f'monthly/{obs}')
         if not os.path.exists(sub_dir):
             os.makedirs(sub_dir)
         for varType in varTypes:
 
-            print(f'Processing {region} {obs} ata')
+            print(f'Processing {region} {obs} {varType}')
             for yr in yrs:
 
-                innc  = os.path.join(main_dir, f'daily/{obs}/{varType}_{yr}-01.nc')
+                innc  = os.path.join(main_dir, f'daily/{obs}/{obs}_{varType}_{yr}.nc')
                 outnc = os.path.join(sub_dir, f'{obs}_{varType}_{yr}.nc')
 
                 ds = xr.open_dataset(innc,chunks={"time": 365})
@@ -54,8 +54,9 @@ if __name__ == "__main__":
 
                 # clean up
                 ds_mon = ds_mon.fillna(-999.0)
-                ds_mon['latitude']  = ds_mon['latitude'].isel(time=0, drop=True)
-                ds_mon['longitude'] = ds_mon['longitude'].isel(time=0, drop=True)
+                if region=='alaska':
+                    ds_mon['latitude']  = ds['latitude']
+                    ds_mon['longitude'] = ds['longitude']
 
                 for var in ds.variables:
                     ds_mon[var].attrs = ds[var].attrs

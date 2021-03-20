@@ -10,10 +10,9 @@ import numpy as np
 #initialize()
 
 downscales = ["BCSD"]
-#gcms       = ["ACCESS1-3","CanESM2","CCSM4","CSIRO-Mk3-6-0","GFDL-ESM2M","HadGEM2-ES","inmcm4","MIROC5","MPI-ESM-MR","MRI-CGCM3"]
-gcms       = ["inmcm4","MIROC5","MPI-ESM-MR","MRI-CGCM3"]
-rcps       = [45, 85]
-varTypes   = ["wf","ws","eb"]
+gcms       = ["ACCESS1-3","CanESM2","CCSM4","CSIRO-Mk3-6-0","GFDL-ESM2M","HadGEM2-ES","inmcm4","MIROC5","MPI-ESM-MR","MRI-CGCM3"]
+rcps       = [85]
+varTypes   = ["met"]
 regions    = ["alaska"]
 
 if __name__ == "__main__":
@@ -22,7 +21,7 @@ if __name__ == "__main__":
 
     yrs = range(1950,2100)
     for region in regions:
-        main_dir = f'/glade/p/ral/hap/mizukami/oconus_hydro/{region}_run/output'
+        main_dir = f'/glade/p/ral/hap/mizukami/oconus_hydro/{region}_run/met'
 
         ds1 = xr.open_dataset(os.path.join(main_dir, f'{region}_mask.nc'))
         mask = ds1['mask'].where(ds1['mask']==1).notnull()
@@ -46,10 +45,7 @@ if __name__ == "__main__":
                             if region == 'alaska':
                                 ds = ds.isel(y=range(15,181), x=range(40,245))
 
-                            if varType == 'ws' or varType == 'eb':
-                                ds_mon = ds.resample(time="1MS").mean(dim="time").where(mask)
-                            elif varType == 'wf':
-                                ds_mon = ds.resample(time="1MS").sum(dim="time").where(mask)
+                            ds_mon = ds.resample(time="1MS").mean(dim="time").where(mask)
 
                             # clean up
                             ds_mon = ds_mon.fillna(-999.0)
@@ -60,8 +56,7 @@ if __name__ == "__main__":
                             for var in ds.variables:
                                 ds_mon[var].attrs = ds[var].attrs
                                 ds_mon[var].encoding['_FillValue'] = -999.0
-                                if varType == 'wf' and var not in ['latitude','longitude','time']:
-                                    ds_mon[var].attrs['units'] = 'mm/month'
+
                             ds_mon['time'].encoding['dtype']='int32'
 
                             ds_mon.load().to_netcdf(outnc, unlimited_dims=['time'])
