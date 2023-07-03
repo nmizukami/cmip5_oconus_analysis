@@ -53,7 +53,8 @@ OBS_MET_MON_ROOT_DIR = {'grid': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/a
 FILE_TAG = {'NET_SHORT':'eb','NET_LONG':'eb','SENSIBLE':'eb','LATENT':'eb','GRND_FLUX':'eb','SOIL_TEMP1':'eb','SOIL_TEMP2':'eb','SOIL_TEMP3':'eb','ENERGY_ERROR':'eb',
             'SWE':'ws','IWE':'ws','SM1':'ws','SM2':'ws','SM3':'ws','WATER_ERROR':'ws',
             'total_runoff':'wf','RUNOFF':'wf','BASEFLOW':'wf','EVAP':'wf','PRCP':'wf', 'SNOW_MELT':'wf', 'GLACIER_MELT':'wf',
-            'pcp':'met','tmean':'met', 'tmax':'met', 'tmin':'met', 'dtr':'met',
+            'OUT_PET_NATVEG':'pet','OUT_PET_H2OSURF':'pet',
+            'pcp':'met','tmean':'met', 'tmax':'met', 'tmin':'met', 'dtr':'met','wday':'met'
             }
 
 DOMAIN = {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/output/alaska_mask.nc',
@@ -63,7 +64,7 @@ DOMAIN = {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/output/alaska
 DEFAULT_MON_HYDRO_VARS = ['PRCP', 'EVAP', 'total_runoff', 'SWE', 'SM1', 'SM2', 'SM3']
 DEFAULT_DAY_HYDRO_VARS = ['total_runoff']
 
-DEFAULT_MON_MET_VARS = ['pcp', 'tmean', 'tmin', 'tmax']
+DEFAULT_MON_MET_VARS = ['pcp', 'tmean', 'tmin', 'tmax', 'wday']
 DEFAULT_DAY_MET_VARS = ['pcp', 'tmean', 'tmin', 'tmax']
 
 KELVIN = 273.13
@@ -108,7 +109,7 @@ def resample_data(ds, freq='MS', region=None, chunks=None):
 
     out = xr.Dataset()
     for name, da in ds.data_vars.items():
-        if name in ['PRCP', 'EVAP', 'total_runoff', 'RUNOFF', 'BASEFLOW']:
+        if name in ['PRCP', 'EVAP', 'total_runoff', 'RUNOFF', 'BASEFLOW','OUT_PET_NATVEG']:
             out[name] = da.resample(time=freq).sum(skipna=False)#.where(mask)
         else:
             # TODO: weight by days in month, or sum over year
@@ -134,7 +135,7 @@ def load_monthly_historical_hydro_datasets(models=None,
         raise NotImplementedError('No other data types are supported at this time')
 
     data = {}
-    data['gcm'] = load_monthly_cmip5_hydro_datasets('historical', models=models, variables=variables, region=region, dataType=dataType, **kwargs)
+    data['gcm'] = load_monthly_cmip5_hydro_datasets('hist', models=models, variables=variables, region=region, dataType=dataType, **kwargs)
     data['obs'] = load_monthly_obs_hydro_datasets(variables=variables, region=region, dataType=dataType, **kwargs)
 
     return data
@@ -153,7 +154,7 @@ def load_daily_historical_hydro_datasets(models=None,
         raise NotImplementedError('No other data types are supported at this time')
 
     data = {}
-    data['gcm'] = load_daily_cmip5_hydro_datasets('historical', models=models, variables=variables, region=region, dataType=dataType, **kwargs)
+    data['gcm'] = load_daily_cmip5_hydro_datasets('hist', models=models, variables=variables, region=region, dataType=dataType, **kwargs)
     data['obs'] = load_daily_obs_hydro_datasets(variables=variables, region=region, dataType=dataType, **kwargs)
 
     return data
@@ -253,7 +254,7 @@ def load_monthly_historical_met_datasets(models=None,
         raise NotImplementedError('No other data types are supported at this time')
 
     data = {}
-    data['gcm'] = load_monthly_cmip5_met_datasets('historical', models=models, variables=variables, region=region, dataType=dataType, **kwargs)
+    data['gcm'] = load_monthly_cmip5_met_datasets('hist', models=models, variables=variables, region=region, dataType=dataType, **kwargs)
     data['obs'] = load_monthly_obs_met_datasets(variables=variables, region=region, dataType=dataType, **kwargs)
 
     return data
@@ -272,7 +273,7 @@ def load_daily_historical_met_datasets(models=None,
         raise NotImplementedError('No other data types are supported at this time')
 
     data = {}
-    data['gcm'] = load_daily_cmip5_met_datasets('historical', models=models, variables=variables, region=region, dataType=dataType, **kwargs)
+    data['gcm'] = load_daily_cmip5_met_datasets('hist', models=models, variables=variables, region=region, dataType=dataType, **kwargs)
     data['obs'] = load_daily_obs_met_datasets(variables=variables, region=region, dataType=dataType, **kwargs)
 
     return data
@@ -388,7 +389,7 @@ def load_cmip5_dataset(root, variables=None, scen='rcp85', models=None, **kwargs
     valid_years = get_valid_years(scen)
     if 'hist' in scen:
         scen = 'rcp85'  # bcsd put historical in the rcp dataset
-    elif 'hist_rcp45':
+    elif 'hist_rcp45' in scen:
         scen = 'rcp45'  # bcsd put historical in the rcp dataset
 
     if models is None:
@@ -454,7 +455,9 @@ def load_obs_dataset(root, variables=None, **kwargs):
     return ds
 
 
+##--------------------------------
 ###. Not used
+
 def load_daily_obs_meteorology(region=None, dataType=None, **kwargs):
     print('load_daily_obs_meteorology', flush=True)
 
