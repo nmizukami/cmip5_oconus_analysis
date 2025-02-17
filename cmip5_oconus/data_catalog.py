@@ -7,47 +7,47 @@ import xarray as xr
 
 # TODO: make this more configurable
 # GCMs
-CMIP5_VIC_DAY_ROOT_DIR = {'grid': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/output/daily/BCSD',
-                                   'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/output/daily/BCSD'},
-                          'hrus': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/output/daily/basin_average/BCSD',
-                                   'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/output/daily/basins_average/BCSD'}
+CMIP5_VIC_DAY_ROOT_DIR = {'grid': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/output/daily/BCSD',
+                                   'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/daily/BCSD'},
+                          'hrus': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/output/daily/basin_average/BCSD',
+                                   'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/daily/basins_average/BCSD'}
                          }
 
-CMIP5_VIC_MON_ROOT_DIR = {'grid': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/output/monthly/BCSD',
-                                   'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/output/monthly/BCSD'},
-                          'hrus': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/output/monthly/basin_average/BCSD',
-                                   'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/output/monthly/basin_average/BCSD'}
+CMIP5_VIC_MON_ROOT_DIR = {'grid': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/output/monthly/BCSD',
+                                   'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/monthly/BCSD'},
+                          'hrus': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/output/monthly/basin_average/BCSD',
+                                   'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/monthly/basin_average/BCSD'}
                          }
 
-CMIP5_MET_DAY_ROOT_DIR = {'grid': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/met',
-                                   'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/met'},
-                          'hrus': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/met/basin_average/BCSD',
-                                   'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/met/basin_average/BCSD'}
+CMIP5_MET_DAY_ROOT_DIR = {'grid': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/met',
+                                   'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/met'},
+                          'hrus': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/met/basin_average/BCSD',
+                                   'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/met/basin_average/BCSD'}
                          }
 
-CMIP5_MET_MON_ROOT_DIR = {'grid': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/met/monthly/BCSD',
-                                   'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/met/monthly/BCSD'},
-                          'hrus': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/met/monthly/basin_average/BCSD',
-                                   'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/met/monthly/basin_average/BCSD'}
+CMIP5_MET_MON_ROOT_DIR = {'grid': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/met/monthly/BCSD',
+                                   'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/met/monthly/BCSD'},
+                          'hrus': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/met/monthly/basin_average/BCSD',
+                                   'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/met/monthly/basin_average/BCSD'}
                          }
 
 # observed
-OBS_VIC_DAY_ROOT_DIR = {'grid': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/output/daily/daymet',
-                                 'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/output/daily/uh'},
-                        'hrus': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/output/daily/basin_average/daymet',
-                                 'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/output/daily/basin_average/uh'}
+OBS_VIC_DAY_ROOT_DIR = {'grid': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/output/daily/daymet',
+                                 'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/daily/uh'},
+                        'hrus': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/output/daily/basin_average/daymet',
+                                 'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/daily/basin_average/uh'}
                        }
 
-OBS_VIC_MON_ROOT_DIR = {'grid': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/output/monthly/daymet',
-                                 'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/output/monthly/uh'},
-                        'hrus': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/output/monthly/basin_average/daymet',
-                                 'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/output/monthly/basin_average/uh'}
+OBS_VIC_MON_ROOT_DIR = {'grid': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/output/monthly/daymet',
+                                 'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/monthly/uh'},
+                        'hrus': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/output/monthly/basin_average/daymet',
+                                 'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/monthly/basin_average/uh'}
                        }
 
-OBS_MET_MON_ROOT_DIR = {'grid': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/met/monthly/daymet',
-                                 'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/met/monthly/uh'},
-                        'hrus': {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/met/monthly/basin_average/daymet',
-                                 'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/met/monthly/basin_average/uh'}
+OBS_MET_MON_ROOT_DIR = {'grid': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/met/monthly/daymet',
+                                 'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/met/monthly/uh'},
+                        'hrus': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/met/monthly/basin_average/daymet',
+                                 'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/met/monthly/basin_average/uh'}
                        }
 
 FILE_TAG = {'NET_SHORT':'eb','NET_LONG':'eb','SENSIBLE':'eb','LATENT':'eb','GRND_FLUX':'eb','SOIL_TEMP1':'eb','SOIL_TEMP2':'eb','SOIL_TEMP3':'eb','ENERGY_ERROR':'eb',
@@ -56,8 +56,8 @@ FILE_TAG = {'NET_SHORT':'eb','NET_LONG':'eb','SENSIBLE':'eb','LATENT':'eb','GRND
             'pcp':'met','tmean':'met', 'tmax':'met', 'tmin':'met', 'dtr':'met',
             }
 
-DOMAIN = {'AK': '/glade/p/ral/hap/mizukami/oconus_hydro/alaska_run/output/alaska_mask.nc',
-          'HI': '/glade/p/ral/hap/mizukami/oconus_hydro/hawaii_run/output/hawaii_mask.nc'}
+DOMAIN = {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/output/alaska_mask.nc',
+          'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/hawaii_mask.nc'}
 
 
 DEFAULT_MON_HYDRO_VARS = ['PRCP', 'EVAP', 'total_runoff', 'SWE', 'SM1', 'SM2', 'SM3']
