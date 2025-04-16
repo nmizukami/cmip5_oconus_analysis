@@ -38,7 +38,7 @@ OBS_VIC_DAY_ROOT_DIR = {'grid': {'AK': '/glade/campaign/ral/hap/mizukami/proj/fi
                                  'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/daily/basin_average/uh'}
                        }
 
-OBS_VIC_MON_ROOT_DIR = {'grid': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro//alaska_run/output/monthly/daymet',
+OBS_VIC_MON_ROOT_DIR = {'grid': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/output/monthly/daymet',
                                  'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/monthly/uh'},
                         'hrus': {'AK': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/alaska_run/output/monthly/basin_average/daymet',
                                  'HI': '/glade/campaign/ral/hap/mizukami/proj/finished/oconus_hydro/hawaii_run/output/monthly/basin_average/uh'}

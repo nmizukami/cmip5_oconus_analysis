@@ -38,9 +38,9 @@ import cmip5_oconus
 
 or
 
-Append to the system environment variable PYTHONPATH the pfafstetter directory 
+Simply add these in notebooks
 
-```bash
-PYTHONPATH=$PYTHONPATH:<path_to_cmip5_oconus directory>
-export $PYTHONPATH
+```python
+module_path = os.path.abspath('../')
+sys.path.insert(0, module_path)
 ```
